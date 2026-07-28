@@ -192,84 +192,73 @@
           </div>
         </section>
 
-        <section class="timing_section section_flex" id="program">
+        <section class="timing_section program-section section_flex" id="program">
           <header class="timing__header header_section">
             <p>Видання № 1</p>
             <p>Субота 05.09.2026 Року</p>
           </header>
-          <h2 class="timing_title title_style">Програма дня</h2>
-          <div class="timing_wrap">
-            <p class="timing_bg_text bg_text">це буде незабутньо</p>
+          <h2 class="program-title">Програма дня</h2>
+          <p class="program-subtitle">це буде незабутньо</p>
 
-            <article class="timing__item">
-              <div class="_time_wrap">
-                <div class="_time_img">
-                  <img src="assets/icons/timeline-1.svg" alt="" />
-                </div>
-                <p>13:50</p>
-              </div>
-              <span class="time_line"></span>
-              <div class="_time_content_wrap">
-                <h3 class="_time_title">Збір гостей</h3>
-                <p>Зустрічаємося біля місця проведення церемонії.</p>
-              </div>
-            </article>
+          <div class="program-timeline" id="program-timeline">
+            <svg
+              class="program-line"
+              id="program-line"
+              aria-hidden="true"
+              preserveAspectRatio="none"
+            >
+              <path id="program-path"></path>
+            </svg>
 
-            <article class="timing__item">
-              <div class="_time_wrap">
-                <div class="_time_img">
-                  <img src="assets/icons/timeline-2.svg" alt="" />
-                </div>
-                <p>14:00</p>
-              </div>
-              <span class="time_line"></span>
-              <div class="_time_content_wrap">
-                <h3 class="_time_title">Церемонія одруження</h3>
-                <p>РАЦС Шевченківського району.</p>
-              </div>
-            </article>
+            <svg
+              class="program-heart"
+              id="program-heart"
+              width="82"
+              height="72"
+              viewBox="0 0 82 72"
+              fill="none"
+              aria-hidden="true"
+            >
+              <path
+                d="M23.07 6.001c11.042 0 17.597 9.5 17.597 9.5s6.946-10.985 19.902-9.5c13.893 1.593 20.41 14.28 15.689 27.23-6.412 17.59-35.591 35.27-35.591 35.27S10.564 51.855 4.483 31.782C.612 19.005 7.939 6.002 23.07 6.002z"
+                stroke="currentColor"
+              />
+              <path
+                d="M22.485.684C34.571.684 40.18 8.98 40.18 8.98S45.596-.963 59.777.684c15.207 1.767 24.527 17.32 19.36 31.689C72.117 51.887 41.07 70.5 41.07 70.5S8.23 53.268 1.573 31C-2.664 16.825 5.923.685 22.485.684z"
+                stroke="currentColor"
+              />
+              <path
+                d="M76.445 26.61c0 22.421-33.245 40.57-34.66 41.32a2.563 2.563 0 01-2.429 0c-1.416-.75-34.66-18.899-34.66-41.32A19.882 19.882 0 0124.554 6.75c6.614 0 12.405 2.844 16.015 7.652 3.61-4.808 9.401-7.652 16.016-7.652a19.882 19.882 0 0119.86 19.86z"
+                fill="currentColor"
+              />
+            </svg>
 
-            <article class="timing__item">
-              <div class="_time_wrap">
-                <div class="_time_img">
-                  <img src="assets/icons/timeline-3.svg" alt="" />
-                </div>
-                <p>15:30</p>
-              </div>
-              <span class="time_line"></span>
-              <div class="_time_content_wrap">
-                <h3 class="_time_title">Фуршет</h3>
-                <p>Легке частування та час для спілкування.</p>
-              </div>
-            </article>
+            <div class="program-items">
+              <article class="program-item">
+                <h3>Збір гостей</h3>
+                <time datetime="2026-09-05T13:50:00+03:00">13:50</time>
+              </article>
 
-            <article class="timing__item">
-              <div class="_time_wrap">
-                <div class="_time_img">
-                  <img src="assets/icons/timeline-4.svg" alt="" />
-                </div>
-                <p>16:00</p>
-              </div>
-              <span class="time_line"></span>
-              <div class="_time_content_wrap">
-                <h3 class="_time_title">Банкет</h3>
-                <p>Святкова вечеря у ресторані Park Land.</p>
-              </div>
-            </article>
+              <article class="program-item">
+                <h3>Церемонія одруження</h3>
+                <time datetime="2026-09-05T14:00:00+03:00">14:00</time>
+              </article>
 
-            <article class="timing__item">
-              <div class="_time_wrap">
-                <div class="_time_img">
-                  <img src="assets/icons/timeline-4.svg" alt="" />
-                </div>
-                <p>21:30</p>
-              </div>
-              <span class="time_line"></span>
-              <div class="_time_content_wrap">
-                <h3 class="_time_title">Завершення свята</h3>
-                <p>Дякуємо, що розділили цей особливий день з нами.</p>
-              </div>
-            </article>
+              <article class="program-item">
+                <h3>Фуршет</h3>
+                <time datetime="2026-09-05T15:30:00+03:00">15:30</time>
+              </article>
+
+              <article class="program-item">
+                <h3>Банкет</h3>
+                <time datetime="2026-09-05T16:00:00+03:00">16:00</time>
+              </article>
+
+              <article class="program-item">
+                <h3>Завершення свята</h3>
+                <time datetime="2026-09-05T21:30:00+03:00">21:30</time>
+              </article>
+            </div>
           </div>
         </section>
 

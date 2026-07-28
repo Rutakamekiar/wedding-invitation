@@ -168,6 +168,121 @@ function setupFixedSections() {
   sections.forEach((section) => observer.observe(section));
 }
 
+function setupProgramTimeline() {
+  const timeline = document.getElementById("program-timeline");
+  const line = document.getElementById("program-line");
+  const path = document.getElementById("program-path");
+  const heart = document.getElementById("program-heart");
+  const items = [...timeline.querySelectorAll(".program-item")];
+  const reducedMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)",
+  ).matches;
+  let pathLength = 0;
+  let currentProgress = 0;
+  let targetProgress = 0;
+  let frameId = 0;
+
+  const itemObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          itemObserver.unobserve(entry.target);
+        }
+      });
+    },
+    {
+      threshold: 0.2,
+      rootMargin: "0px 0px -8% 0px",
+    },
+  );
+  items.forEach((item) => itemObserver.observe(item));
+
+  function positionHeart(progress) {
+    if (!pathLength) return;
+    const point = path.getPointAtLength(pathLength * progress);
+    const width = heart.getBoundingClientRect().width;
+    const height = heart.getBoundingClientRect().height;
+    heart.style.transform = `translate3d(${point.x - width / 2}px, ${
+      point.y - height / 2
+    }px, 0)`;
+  }
+
+  function drawPath() {
+    const width = timeline.clientWidth;
+    const height = timeline.scrollHeight;
+    const centerX = width / 2;
+    const centers = items.map(
+      (item) => item.offsetTop + item.offsetHeight / 2,
+    );
+    if (!centers.length) return;
+
+    let pathData = `M ${centerX} ${centers[0]}`;
+    for (let index = 1; index < centers.length; index += 1) {
+      const controlX =
+        index % 2 === 1 ? width * 1.06 : width * -0.06;
+      const controlY = (centers[index - 1] + centers[index]) / 2;
+      pathData += ` Q ${controlX} ${controlY}, ${centerX} ${centers[index]}`;
+    }
+
+    line.setAttribute("viewBox", `0 0 ${width} ${height}`);
+    line.style.height = `${height}px`;
+    path.setAttribute("d", pathData);
+    pathLength = path.getTotalLength();
+    positionHeart(currentProgress);
+  }
+
+  function updateTargetProgress() {
+    const bounds = timeline.getBoundingClientRect();
+    const timelineTop = window.scrollY + bounds.top;
+    const start = timelineTop - window.innerHeight * 0.6;
+    const end =
+      timelineTop + timeline.offsetHeight - window.innerHeight * 0.7;
+    targetProgress = Math.min(
+      1,
+      Math.max(0, (window.scrollY - start) / Math.max(1, end - start)),
+    );
+
+    if (reducedMotion) {
+      currentProgress = targetProgress;
+      positionHeart(currentProgress);
+      return;
+    }
+
+    if (!frameId) frameId = window.requestAnimationFrame(animateHeart);
+  }
+
+  function animateHeart() {
+    const distance = targetProgress - currentProgress;
+    currentProgress += distance * 0.12;
+    if (Math.abs(distance) < 0.001) {
+      currentProgress = targetProgress;
+      frameId = 0;
+      positionHeart(currentProgress);
+      return;
+    }
+    positionHeart(currentProgress);
+    frameId = window.requestAnimationFrame(animateHeart);
+  }
+
+  let resizeTimer = 0;
+  window.addEventListener(
+    "resize",
+    () => {
+      window.clearTimeout(resizeTimer);
+      resizeTimer = window.setTimeout(() => {
+        drawPath();
+        updateTargetProgress();
+      }, 120);
+    },
+    { passive: true },
+  );
+  window.addEventListener("scroll", updateTargetProgress, { passive: true });
+
+  drawPath();
+  updateTargetProgress();
+}
+
 function setupMusic() {
   const music = document.getElementById("background-music");
   const button = document.getElementById("mute-button");
@@ -641,6 +756,7 @@ document.addEventListener("DOMContentLoaded", () => {
   updateCountdown();
   window.setInterval(updateCountdown, 1_000);
   setupFixedSections();
+  setupProgramTimeline();
   setupMusic();
   setupWordSearch();
   setupDecorativeHearts();
