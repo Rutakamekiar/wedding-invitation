@@ -888,8 +888,24 @@ function setupDesignPlayground() {
           label: "Craftwork Grotesk",
           value: "CraftworkGrotesk, Arial, sans-serif",
         },
+        { label: "Montserrat", value: "Montserrat, Arial, sans-serif" },
+        { label: "Arsenal", value: "Arsenal, Arial, sans-serif" },
+        { label: "Lora", value: "Lora, Georgia, serif" },
         { label: "Nyght Serif", value: "NyghtSerif, Georgia, serif" },
         { label: "Angst", value: "Angst, Georgia, serif" },
+        { label: "Kuhlenbach", value: "Kuhlenbach, Georgia, serif" },
+        {
+          label: "Mr Hamiltone",
+          value: "mr_HamiltoneG, Georgia, serif",
+        },
+        {
+          label: "TTLovelies Script",
+          value: "TTLoveliesScript, Georgia, serif",
+        },
+        {
+          label: "Bodega Script",
+          value: "BodegaScript, Georgia, serif",
+        },
         { label: "Georgia", value: "Georgia, serif" },
         { label: "Arial", value: "Arial, sans-serif" },
       ],
@@ -915,6 +931,22 @@ function setupDesignPlayground() {
         {
           label: "Kuhlenbach",
           value: "Kuhlenbach, Georgia, serif",
+        },
+        {
+          label: "Cormorant Infant",
+          value: '"Cormorant Infant", Georgia, serif',
+        },
+        {
+          label: "Lora",
+          value: "Lora, Georgia, serif",
+        },
+        {
+          label: "Angst",
+          value: "Angst, Georgia, serif",
+        },
+        {
+          label: "Nyght Serif",
+          value: "NyghtSerif, Georgia, serif",
         },
       ],
     }),
