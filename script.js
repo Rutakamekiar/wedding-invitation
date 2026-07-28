@@ -644,16 +644,14 @@ function setupDecorativeHearts() {
     const items = positions[container.dataset.heart] || [];
     items.forEach(([top, left], index) => {
       const heart = document.createElement("img");
-      heart.src =
-        index % 2 === 0
-          ? "assets/icons/heart.svg"
-          : "assets/icons/heart-dark.png";
+      heart.src = "assets/icons/heart.svg";
       heart.alt = "";
       heart.className = "heart";
       heart.style.position = "absolute";
       heart.style.top = top;
       heart.style.left = left;
       heart.style.width = index % 2 === 0 ? "20px" : "18px";
+      heart.style.opacity = index % 2 === 0 ? "1" : "0.62";
       heart.style.animationDelay = `${index * 100}ms`;
       container.append(heart);
     });
