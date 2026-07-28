@@ -592,6 +592,89 @@
       </section>
     </main>
 
+    <aside class="design-playground" aria-label="Тимчасовий редактор дизайну">
+      <button
+        class="design-playground__toggle"
+        id="design-playground-toggle"
+        type="button"
+        aria-expanded="false"
+        aria-controls="design-playground-panel"
+      >
+        <span aria-hidden="true">✦</span>
+        <span data-playground-toggle-label>Спробувати дизайн</span>
+      </button>
+
+      <section
+        class="design-playground__panel"
+        id="design-playground-panel"
+        aria-labelledby="design-playground-title"
+        hidden
+      >
+        <header class="design-playground__header">
+          <div>
+            <span class="design-playground__badge">Тимчасовий режим</span>
+            <h2 id="design-playground-title">Дизайн запрошення</h2>
+          </div>
+          <button
+            class="design-playground__close"
+            type="button"
+            aria-label="Закрити редактор"
+            data-design-close
+          >
+            ×
+          </button>
+        </header>
+
+        <p class="design-playground__intro">
+          Спробуйте інші кольори й фотографії. Зміни бачите лише ви — після
+          оновлення сторінки вони зникнуть.
+        </p>
+
+        <details class="design-playground__group" open>
+          <summary>Основні кольори</summary>
+          <div
+            class="design-playground__controls"
+            id="playground-palette-controls"
+          ></div>
+        </details>
+
+        <details class="design-playground__group">
+          <summary>Шрифти</summary>
+          <div
+            class="design-playground__font-controls"
+            id="playground-font-controls"
+          ></div>
+        </details>
+
+        <details class="design-playground__group">
+          <summary>Фони розділів</summary>
+          <div
+            class="design-playground__controls"
+            id="playground-section-controls"
+          ></div>
+        </details>
+
+        <details class="design-playground__group">
+          <summary>Фотографії</summary>
+          <div
+            class="design-playground__image-controls"
+            id="playground-image-controls"
+          ></div>
+        </details>
+
+        <footer class="design-playground__footer">
+          <p class="design-playground__status" aria-live="polite"></p>
+          <button
+            class="design-playground__reset"
+            id="design-playground-reset"
+            type="button"
+          >
+            Скинути всі зміни
+          </button>
+        </footer>
+      </section>
+    </aside>
+
     <dialog class="response-dialog" id="response-dialog">
       <button
         class="dialog-close"

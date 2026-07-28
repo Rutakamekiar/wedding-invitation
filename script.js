@@ -700,6 +700,352 @@ function setupRsvpForm() {
   });
 }
 
+function setupDesignPlayground() {
+  const panel = document.getElementById("design-playground-panel");
+  const toggle = document.getElementById("design-playground-toggle");
+  const toggleLabel = toggle?.querySelector("[data-playground-toggle-label]");
+  const closeButton = document.querySelector("[data-design-close]");
+  const resetButton = document.getElementById("design-playground-reset");
+  const paletteContainer = document.getElementById(
+    "playground-palette-controls",
+  );
+  const fontContainer = document.getElementById("playground-font-controls");
+  const sectionContainer = document.getElementById(
+    "playground-section-controls",
+  );
+  const imageContainer = document.getElementById("playground-image-controls");
+  const status = panel?.querySelector(".design-playground__status");
+
+  if (
+    !panel ||
+    !toggle ||
+    !toggleLabel ||
+    !closeButton ||
+    !resetButton ||
+    !paletteContainer ||
+    !fontContainer ||
+    !sectionContainer ||
+    !imageContainer ||
+    !status
+  ) {
+    return;
+  }
+
+  const root = document.documentElement;
+  const resetCallbacks = [];
+  const objectUrls = new Map();
+  let statusTimer;
+
+  const announce = (message) => {
+    window.clearTimeout(statusTimer);
+    status.textContent = message;
+    statusTimer = window.setTimeout(() => {
+      status.textContent = "";
+    }, 2_600);
+  };
+
+  const setPanelOpen = (isOpen, returnFocus = false) => {
+    panel.hidden = !isOpen;
+    toggle.setAttribute("aria-expanded", String(isOpen));
+    toggleLabel.textContent = isOpen ? "Закрити редактор" : "Спробувати дизайн";
+    if (!isOpen && returnFocus) toggle.focus();
+  };
+
+  toggle.addEventListener("click", () => {
+    setPanelOpen(panel.hidden);
+  });
+  closeButton.addEventListener("click", () => setPanelOpen(false, true));
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && !panel.hidden) setPanelOpen(false, true);
+  });
+
+  const createColorControl = ({
+    label,
+    value,
+    property,
+    target = root,
+    important = false,
+  }) => {
+    const row = document.createElement("div");
+    const controlLabel = document.createElement("label");
+    const input = document.createElement("input");
+    const output = document.createElement("output");
+    const id = `playground-color-${resetCallbacks.length}`;
+
+    row.className = "design-playground__color-control";
+    controlLabel.htmlFor = id;
+    controlLabel.textContent = label;
+    input.id = id;
+    input.type = "color";
+    input.value = value;
+    output.htmlFor = id;
+    output.textContent = value;
+
+    input.addEventListener("input", () => {
+      target.style.setProperty(
+        property,
+        input.value,
+        important ? "important" : "",
+      );
+      output.textContent = input.value;
+      announce(`Колір «${label}» змінено`);
+    });
+
+    resetCallbacks.push(() => {
+      target.style.removeProperty(property);
+      input.value = value;
+      output.textContent = value;
+    });
+
+    row.append(controlLabel, input, output);
+    return row;
+  };
+
+  const createFontControl = ({
+    label,
+    property,
+    value,
+    options,
+    sample,
+  }) => {
+    const row = document.createElement("div");
+    const controlLabel = document.createElement("label");
+    const select = document.createElement("select");
+    const preview = document.createElement("p");
+    const id = `playground-font-${resetCallbacks.length}`;
+
+    row.className = "design-playground__font-control";
+    controlLabel.htmlFor = id;
+    controlLabel.textContent = label;
+    select.id = id;
+    preview.className = "design-playground__font-sample";
+    preview.textContent = sample;
+    preview.style.setProperty("--preview-font", value);
+
+    options.forEach((option) => {
+      const choice = document.createElement("option");
+      choice.value = option.value;
+      choice.textContent = option.label;
+      select.append(choice);
+    });
+    select.value = value;
+
+    select.addEventListener("change", () => {
+      root.style.setProperty(property, select.value);
+      preview.style.setProperty("--preview-font", select.value);
+      announce(`Шрифт «${label}» змінено`);
+    });
+
+    resetCallbacks.push(() => {
+      root.style.removeProperty(property);
+      select.value = value;
+      preview.style.setProperty("--preview-font", value);
+    });
+
+    row.append(controlLabel, select, preview);
+    return row;
+  };
+
+  const paletteOptions = [
+    { label: "Основний папір", property: "--paper", value: "#fffdf8" },
+    { label: "Чистий світлий", property: "--paper-pure", value: "#ffffff" },
+    { label: "Мʼякий фон", property: "--paper-soft", value: "#faf5eb" },
+    { label: "Основний текст", property: "--ink", value: "#4c3a20" },
+    { label: "Золотий акцент", property: "--gold", value: "#b08a4a" },
+    { label: "Темне золото", property: "--gold-deep", value: "#7a5a28" },
+    { label: "Світле золото", property: "--gold-light", value: "#ead9b8" },
+    { label: "Конверт", property: "--envelope", value: "#b08a4a" },
+  ];
+
+  paletteOptions.forEach((option) => {
+    paletteContainer.append(createColorControl(option));
+  });
+
+  document.querySelectorAll("._color_item").forEach((heart, index) => {
+    const heartColors = ["#faf6d7", "#e0faff", "#fcc9c2", "#93bf9c"];
+    paletteContainer.append(
+      createColorControl({
+        label: `Серце дрес-коду ${index + 1}`,
+        property: "--swatch-color",
+        value: heartColors[index],
+        target: heart,
+      }),
+    );
+  });
+
+  fontContainer.append(
+    createFontControl({
+      label: "Основний шрифт",
+      property: "--font-primary",
+      value: '"Cormorant Infant", Georgia, serif',
+      sample: "Владислав та Олена",
+      options: [
+        {
+          label: "Cormorant Infant",
+          value: '"Cormorant Infant", Georgia, serif',
+        },
+        {
+          label: "Craftwork Grotesk",
+          value: "CraftworkGrotesk, Arial, sans-serif",
+        },
+        { label: "Nyght Serif", value: "NyghtSerif, Georgia, serif" },
+        { label: "Angst", value: "Angst, Georgia, serif" },
+        { label: "Georgia", value: "Georgia, serif" },
+        { label: "Arial", value: "Arial, sans-serif" },
+      ],
+    }),
+    createFontControl({
+      label: "Рукописні акценти",
+      property: "--font-script",
+      value: "BodegaScript, TTLoveliesScript, cursive",
+      sample: "Запрошення на весілля",
+      options: [
+        {
+          label: "Bodega Script",
+          value: "BodegaScript, TTLoveliesScript, cursive",
+        },
+        {
+          label: "TTLovelies Script",
+          value: "TTLoveliesScript, BodegaScript, cursive",
+        },
+        {
+          label: "Mr Hamiltone",
+          value: "mr_HamiltoneG, BodegaScript, cursive",
+        },
+        {
+          label: "Kuhlenbach",
+          value: "Kuhlenbach, Georgia, serif",
+        },
+      ],
+    }),
+  );
+
+  const sectionOptions = [
+    {
+      label: "Перша сторінка",
+      selector: ".first__section",
+      value: "#fffdf8",
+    },
+    { label: "Запрошення й локації", selector: "#invitation", value: "#fffdf8" },
+    { label: "Програма дня", selector: "#program", value: "#fffdf8" },
+    { label: "Гра зі словами", selector: "#game", value: "#fffdf8" },
+    { label: "Дрес-код", selector: "#dress-code", value: "#fffdf8" },
+    { label: "Деталі", selector: "#details", value: "#fffdf8" },
+    {
+      label: "Важлива інформація",
+      selector: ".section__atantion",
+      value: "#fffdf8",
+    },
+    { label: "Анкета", selector: "#rsvp", value: "#fffdf8" },
+  ];
+
+  sectionOptions.forEach((option) => {
+    const target = document.querySelector(option.selector);
+    if (!target) return;
+    sectionContainer.append(
+      createColorControl({
+        ...option,
+        property: "background",
+        target,
+        important: true,
+      }),
+    );
+  });
+
+  const imageOptions = [
+    { label: "Головне фото", selector: ".first__img_wrap img" },
+    { label: "Фон дати", selector: "._date_img img" },
+    { label: "Фото локації", selector: "._local_img img" },
+    { label: "Сюрприз у грі", selector: ".flipper_img img" },
+    { label: "Дрес-код — портрет", selector: "._drescode_info_img img" },
+    { label: "Дрес-код — деталі", selector: ".item_col_img img" },
+    { label: "Фото відліку", selector: ".countdown_bg img" },
+    { label: "Банер деталей", selector: ".organizator_img img" },
+    { label: "Фото організатора", selector: "._organizator_img img" },
+    { label: "Фото побажань", selector: "._wish_img img" },
+    { label: "Банер «Гірко»", selector: ".atantion_img:not(.atantion_img_two) img" },
+    { label: "Другий банер", selector: ".atantion_img_two img" },
+    { label: "Фінальне фото", selector: ".last__bg img" },
+  ];
+
+  imageOptions.forEach((option, index) => {
+    const target = document.querySelector(option.selector);
+    if (!target) return;
+
+    const originalSource = target.getAttribute("src");
+    const row = document.createElement("div");
+    const thumbnail = document.createElement("img");
+    const copy = document.createElement("div");
+    const title = document.createElement("strong");
+    const fileName = document.createElement("small");
+    const actions = document.createElement("div");
+    const input = document.createElement("input");
+    const fileButton = document.createElement("label");
+    const inputId = `playground-image-${index}`;
+
+    row.className = "design-playground__image-control";
+    thumbnail.className = "design-playground__thumbnail";
+    thumbnail.src = originalSource;
+    thumbnail.alt = "";
+    copy.className = "design-playground__image-copy";
+    title.textContent = option.label;
+    fileName.textContent = "Поточне фото";
+    input.className = "design-playground__file-input";
+    input.id = inputId;
+    input.type = "file";
+    input.accept = "image/*";
+    fileButton.className = "design-playground__file-button";
+    fileButton.htmlFor = inputId;
+    fileButton.textContent = "Замінити";
+
+    input.addEventListener("change", () => {
+      const [file] = input.files;
+      if (!file) return;
+      if (!file.type.startsWith("image/")) {
+        input.value = "";
+        announce("Оберіть файл зображення");
+        return;
+      }
+
+      const previousUrl = objectUrls.get(target);
+      if (previousUrl) URL.revokeObjectURL(previousUrl);
+
+      const previewUrl = URL.createObjectURL(file);
+      objectUrls.set(target, previewUrl);
+      target.src = previewUrl;
+      thumbnail.src = previewUrl;
+      fileName.textContent = file.name;
+      announce(`Фото «${option.label}» замінено`);
+    });
+
+    resetCallbacks.push(() => {
+      const previewUrl = objectUrls.get(target);
+      if (previewUrl) {
+        URL.revokeObjectURL(previewUrl);
+        objectUrls.delete(target);
+      }
+      target.setAttribute("src", originalSource);
+      thumbnail.setAttribute("src", originalSource);
+      input.value = "";
+      fileName.textContent = "Поточне фото";
+    });
+
+    copy.append(title, fileName);
+    actions.append(input, fileButton);
+    row.append(thumbnail, copy, actions);
+    imageContainer.append(row);
+  });
+
+  resetButton.addEventListener("click", () => {
+    resetCallbacks.forEach((reset) => reset());
+    announce("Усі зміни скинуто");
+  });
+
+  window.addEventListener("pagehide", () => {
+    objectUrls.forEach((url) => URL.revokeObjectURL(url));
+  });
+}
+
 function downloadCalendarEvent() {
   const formatDate = (date) =>
     date
@@ -759,6 +1105,7 @@ document.addEventListener("DOMContentLoaded", () => {
   setupWordSearch();
   setupDecorativeHearts();
   setupRsvpForm();
+  setupDesignPlayground();
   document
     .getElementById("download-calendar")
     .addEventListener("click", downloadCalendarEvent);
