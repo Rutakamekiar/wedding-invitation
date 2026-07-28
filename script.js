@@ -1,6 +1,6 @@
 "use strict";
 
-const WEDDING_DATE = new Date("2027-04-11T13:00:00+03:00");
+const WEDDING_DATE = new Date("2026-09-05T14:00:00+03:00");
 const DEFAULT_GREETING = "Дорогі гості";
 
 function decodeBase64Url(value) {
@@ -593,7 +593,7 @@ function downloadCalendarEvent() {
       .toISOString()
       .replace(/[-:]/g, "")
       .replace(/\.\d{3}Z$/, "Z");
-  const end = new Date(WEDDING_DATE.getTime() + 9 * 60 * 60 * 1000);
+  const end = new Date("2026-09-05T21:30:00+03:00");
   const calendar = [
     "BEGIN:VCALENDAR",
     "VERSION:2.0",
@@ -603,9 +603,9 @@ function downloadCalendarEvent() {
     `DTSTAMP:${formatDate(new Date())}`,
     `DTSTART:${formatDate(WEDDING_DATE)}`,
     `DTEND:${formatDate(end)}`,
-    "SUMMARY:Весілля Андрія та Анни",
-    "LOCATION:Fairmont Grand Hotel Kyiv",
-    "DESCRIPTION:Весілля Андрія та Анни — 11 квітня 2027 року",
+    "SUMMARY:Весілля Владислава та Олени",
+    "LOCATION:РАЦС Шевченківського району\\, вул. Академіка Ромоданова\\, 17\\, Київ",
+    "DESCRIPTION:Весілля Владислава та Олени — 5 вересня 2026 року. Церемонія о 14:00. Банкет о 16:00 у ресторані Park Land.",
     "END:VEVENT",
     "END:VCALENDAR",
   ].join("\r\n");
@@ -613,7 +613,7 @@ function downloadCalendarEvent() {
   const blob = new Blob([calendar], { type: "text/calendar;charset=utf-8" });
   const link = document.createElement("a");
   link.href = URL.createObjectURL(blob);
-  link.download = "wedding-andrii-anna.ics";
+  link.download = "wedding-vladyslav-olena.ics";
   link.click();
   URL.revokeObjectURL(link.href);
 }
