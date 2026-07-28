@@ -10,6 +10,7 @@
   --gold-faint: #f5ecdc;
   --accent: var(--gold);
   --envelope: var(--gold);
+  --font-primary: "Cormorant Infant", Georgia, serif;
 }
 
 @font-face {
@@ -1074,4 +1075,31 @@ body {
 .atantion_img img,
 .last__bg img {
   filter: sepia(0.16) saturate(0.82) contrast(0.96);
+}
+
+/* Primary wedding typeface */
+body,
+body * {
+  font-family: var(--font-primary) !important;
+}
+
+.first__letter::first-letter {
+  font-family: var(--font-primary) !important;
+}
+
+.envelope-title,
+.envelope-recipient,
+.bg_text,
+.program-subtitle,
+.program-item h3,
+.dialog-kicker {
+  font-family: BodegaScript, TTLoveliesScript, cursive !important;
+}
+
+.first__title p,
+.title_style,
+.program-title,
+.response-dialog h2,
+.atantion_title {
+  font-weight: 700;
 }
