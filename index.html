@@ -1,0 +1,565 @@
+<!doctype html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Весільне запрошення Андрія та Анни — 11 квітня 2027 року."
+    />
+    <meta property="og:title" content="Весільне запрошення" />
+    <meta
+      property="og:description"
+      content="Запрошуємо вас розділити з нами цей особливий день."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="assets/images/hero.webp" />
+    <meta name="theme-color" content="#f5f1eb" />
+    <title>Андрій та Анна — весільне запрошення</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Arsenal:ital,wght@0,400;0,700;1,400;1,700&family=Lora:ital,wght@0,400..700;1,400..700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/css/reference-press.css" />
+    <link rel="stylesheet" href="assets/css/site.css" />
+    <script src="script.js" defer></script>
+  </head>
+
+  <body>
+    <main class="wrapper">
+      <div class="language-badge" aria-label="Мова сторінки">UA</div>
+
+      <audio id="background-music" loop preload="metadata">
+        <source src="assets/audio/jazz.mp3" type="audio/mpeg" />
+      </audio>
+      <div class="music_btn_wrap">
+        <button
+          id="mute-button"
+          class="music-button"
+          type="button"
+          aria-label="Увімкнути музику"
+          aria-pressed="false"
+        >
+          <span class="vinil_wrap">
+            <img src="assets/images/vinyl.webp" alt="" />
+          </span>
+          <span class="btn_vol_wrap">
+            <img
+              src="assets/icons/play.png"
+              alt=""
+              class="sound-icon"
+              id="sound-on"
+            />
+            <img
+              src="assets/icons/pause.png"
+              alt=""
+              class="sound-icon"
+              id="sound-off"
+              hidden
+            />
+          </span>
+        </button>
+      </div>
+
+      <div class="__container">
+        <section class="first__section section_flex">
+          <div class="first__header">
+            <p>Видання № 1</p>
+            <p>Неділя 11.04.2027 Року</p>
+          </div>
+          <div class="first__title">
+            <p>Весільна Хроніка</p>
+          </div>
+          <div class="first__name_wrap" data-heart="section1">
+            <h1><span>Андрій та Анна</span></h1>
+            <h2>одружуються</h2>
+          </div>
+          <div class="first__img_wrap">
+            <p class="first_img_text bg_text">не пройшло і 10 років</p>
+            <img
+              src="assets/images/hero.webp"
+              alt="Андрій та Анна"
+              fetchpriority="high"
+            />
+          </div>
+        </section>
+
+        <section class="info__section section_flex" id="invitation">
+          <header class="info__header header_section">
+            <p>Видання № 1</p>
+            <p>Неділя 11.04.2027 Року</p>
+          </header>
+          <div class="info_date_wrap">
+            <div class="_date_wrap">
+              <div class="_date_img">
+                <img src="assets/images/date.webp" alt="" />
+              </div>
+              <div class="_date_text_wrap">
+                <div class="_date_text_title">
+                  <span>Save</span>
+                  <span>the</span>
+                  <span>Date</span>
+                </div>
+                <div class="_date_subtext_title">
+                  <p>11 Квітня 2027</p>
+                </div>
+              </div>
+            </div>
+            <div class="info_text_wrap">
+              <h2 class="_text_title title_style" id="guest-greeting">
+                Дорогі гості
+              </h2>
+              <p class="_text_wrap first__letter">
+                у цей особливий день ми мріємо бути в оточенні найрідніших та
+                найдорожчих людей. З великим задоволенням запрошуємо вас
+                розділити з нами день народження нашої родини! Ми щиро віримо і
+                сподіваємось, що цей день стане красивим початком нашого
+                спільного життя.
+              </p>
+            </div>
+          </div>
+          <div class="info_local_wrap">
+            <div class="__local_item_wrap">
+              <h2 class="__local_title title_style">Локація</h2>
+              <div class="__local_text">
+                <span>Київ, вул. Набережно-Хрещатицька, 1</span>
+                <span>Готель Fairmont Grand Hotel</span>
+              </div>
+              <a
+                href="https://maps.google.com/?q=Fairmont+Grand+Hotel+Kyiv"
+                target="_blank"
+                rel="noreferrer"
+                class="local__link"
+              >
+                Відкрити карту
+              </a>
+            </div>
+            <div class="_local_img">
+              <p class="_local_img_text bg_text">наш день</p>
+              <img src="assets/images/location.webp" alt="Місце весілля" />
+            </div>
+          </div>
+        </section>
+
+        <section class="timing_section section_flex" id="program">
+          <header class="timing__header header_section">
+            <p>Видання № 1</p>
+            <p>Неділя 11.04.2027 Року</p>
+          </header>
+          <h2 class="timing_title title_style">Програма дня</h2>
+          <div class="timing_wrap">
+            <p class="timing_bg_text bg_text">це буде незабутньо</p>
+
+            <article class="timing__item">
+              <div class="_time_wrap">
+                <div class="_time_img">
+                  <img src="assets/icons/timeline-1.svg" alt="" />
+                </div>
+                <p>14:30</p>
+              </div>
+              <span class="time_line"></span>
+              <div class="_time_content_wrap">
+                <h3 class="_time_title">Збір гостей</h3>
+                <p>Гості збираються у парковій зоні біля місця церемонії.</p>
+              </div>
+            </article>
+
+            <article class="timing__item">
+              <div class="_time_wrap">
+                <div class="_time_img">
+                  <img src="assets/icons/timeline-2.svg" alt="" />
+                </div>
+                <p>15:00</p>
+              </div>
+              <span class="time_line"></span>
+              <div class="_time_content_wrap">
+                <h3 class="_time_title">Церемонія одруження</h3>
+                <p>Момент, на який ми всі чекали!</p>
+              </div>
+            </article>
+
+            <article class="timing__item">
+              <div class="_time_wrap">
+                <div class="_time_img">
+                  <img src="assets/icons/timeline-3.svg" alt="" />
+                </div>
+                <p>14:30</p>
+              </div>
+              <span class="time_line"></span>
+              <div class="_time_content_wrap">
+                <h3 class="_time_title">Банкет</h3>
+                <p>
+                  На вас чекатимуть смачні страви, святкова програма та
+                  веселощі.
+                </p>
+              </div>
+            </article>
+
+            <article class="timing__item">
+              <div class="_time_wrap">
+                <div class="_time_img">
+                  <img src="assets/icons/timeline-4.svg" alt="" />
+                </div>
+                <p>14:30</p>
+              </div>
+              <span class="time_line"></span>
+              <div class="_time_content_wrap">
+                <h3 class="_time_title">Збір гостей</h3>
+                <p>Гості збираються у парковій зоні біля місця церемонії.</p>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="section_game section_flex" id="game">
+          <header class="game__header header_section">
+            <p>Видання № 1</p>
+            <p>Неділя 11.04.2027 Року</p>
+          </header>
+          <h2 class="game_title title_style">
+            Знайдіть 10 слів
+            <span class="game_bg_text bg_text">в кінці сюрприз</span>
+          </h2>
+          <div
+            id="words-data"
+            class="words_data_wrap"
+            data-words="весілля,наречена,обручка,букет,танець,кохання,наречений,торт,обітниця,фата"
+          ></div>
+          <div class="flipper_wrap">
+            <div class="grid-wrapper">
+              <canvas id="lineCanvas"></canvas>
+              <div class="grid" id="grid"></div>
+            </div>
+            <div class="flipper_img" id="game-surprise">
+              <p class="flipper_bg_text bg_text">це ми</p>
+              <button
+                class="close_flipper"
+                id="close-game"
+                type="button"
+                aria-label="Закрити фотографію"
+              >
+                <span></span><span></span>
+              </button>
+              <img src="assets/images/couple.webp" alt="Андрій та Анна" />
+            </div>
+          </div>
+          <div class="word-list" id="wordList"></div>
+        </section>
+
+        <section class="section_drescode" id="dress-code">
+          <header class="drescode__header header_section">
+            <p>Видання № 1</p>
+            <p>Неділя 11.04.2027 Року</p>
+          </header>
+          <div class="drescode_item_info">
+            <div class="_drescode_info_img">
+              <img
+                src="assets/images/dresscode/portrait.webp"
+                alt="Приклад образу"
+              />
+            </div>
+            <div class="_drescode_info_wrap">
+              <h2 class="_info__title title_style">Дрес код</h2>
+              <div class="_info__text_wrap">
+                <p class="_info__text first__letter">
+                  Будемо вдячні, якщо ви оберете вбрання, що підтримує атмосферу
+                  нашого свята.
+                </p>
+                <p class="_info__text">
+                  Ми будемо раді, якщо ви надасте перевагу світлим пастельним
+                  відтінкам, які відповідають стилю весілля. Надихайтесь нашою
+                  палітрою.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="drescode_item">
+            <div class="item_col_wrap" data-heart="section2">
+              <div class="_color_list" aria-label="Кольори дрес-коду">
+                <span class="_color_item" style="background-color: #fff"></span>
+                <span
+                  class="_color_item"
+                  style="background-color: #e7ddd4"
+                ></span>
+                <span
+                  class="_color_item"
+                  style="background-color: #b6a59d"
+                ></span>
+                <span
+                  class="_color_item"
+                  style="background-color: #bf9e8d"
+                ></span>
+                <span
+                  class="_color_item"
+                  style="background-color: #40362d"
+                ></span>
+                <span
+                  class="_color_item"
+                  style="background-color: #040404"
+                ></span>
+              </div>
+              <div class="_color__text_wrap">
+                <p>
+                  Обирайте те, у чому вам буде зручно танцювати, обійматися й
+                  радіти з нами.
+                </p>
+              </div>
+            </div>
+            <div class="item_col_img">
+              <p class="dress_bg_text bg_text">зовсім скоро</p>
+              <img
+                src="assets/images/dresscode/detail.webp"
+                alt="Деталь святкового образу"
+              />
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <section class="section_countdown" aria-label="Відлік до весілля">
+        <div class="section_countdown_fixed">
+          <div class="countdown_bg">
+            <img src="assets/images/couple.webp" alt="" />
+          </div>
+          <div class="countdown_wrap">
+            <h2 class="countdown__title">До весілля залишилось</h2>
+            <div class="time__wrap" aria-live="polite">
+              <div class="time__item">
+                <span class="day">000</span>
+                <span class="day-label">днів</span>
+              </div>
+              <div class="time__item">
+                <span class="hour">00</span>
+                <span class="hour-label">годин</span>
+              </div>
+              <div class="time__item">
+                <span class="minut">00</span>
+                <span class="minute-label">хвилин</span>
+              </div>
+              <div class="time__item">
+                <span class="second">00</span>
+                <span class="second-label">секунд</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="__container invitation-content">
+        <section class="section_organizator" id="details">
+          <header class="organizator__header header_section">
+            <p>Видання № 1</p>
+            <p>Неділя 11.04.2027 Року</p>
+          </header>
+          <div class="organizator_img">
+            <img src="assets/images/organizer-bg.webp" alt="" />
+          </div>
+          <div class="organizator_wrap">
+            <div class="organizator_item">
+              <h2 class="_item__title title_style">
+                Організатор
+                <span class="organizator_bg_text bg_text">наш</span>
+              </h2>
+              <div class="_item__text_wrap">
+                <p class="_info__text first__letter">
+                  Якщо у вас виникнуть питання або знадобиться допомога у день
+                  весілля, звертайтеся до нашого організатора Катерини.
+                </p>
+              </div>
+              <a href="tel:+380631234567" class="_item_link"
+                >+380631234567</a
+              >
+            </div>
+            <div class="_organizator_img">
+              <img
+                src="assets/images/organizer.webp"
+                alt="Організатор Катерина"
+              />
+            </div>
+          </div>
+          <div class="wish_wrap">
+            <div class="_wish_img">
+              <img src="assets/images/wish.webp" alt="" />
+            </div>
+            <div class="wish_item">
+              <h2 class="_item__title title_style">
+                Побажання <span class="wish_bg_text bg_text">деталі</span>
+              </h2>
+              <div class="_item__text_wrap">
+                <p class="_info__text first__letter">
+                  Ми щиро вдячні за ваше бажання привітати нас. Якщо ви хотіли б
+                  зробити приємний жест, замість квітів будемо раді пляшці
+                  хорошого вина або благодійному внеску на підтримку тих, хто
+                  цього потребує. Це буде найкращий подарунок для нас.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section__atantion" data-heart="section4">
+          <header class="atantion__header header_section">
+            <p>Видання № 1</p>
+            <p>Неділя 11.04.2027 Року</p>
+          </header>
+          <div class="atantion_img">
+            <img src="assets/images/attention-1.webp" alt="" />
+          </div>
+          <div class="atantion_main_wrap">
+            <h2 class="atantion_title title_style">
+              Гірко
+              <span class="atantion_bg_text bg_text">дуже просимо</span>
+            </h2>
+            <div class="atantion_text_wrap">
+              <p class="_info__text first__letter">
+                Просимо утриматися від гучних вигуків «Гірко!» Ми хочемо, щоб
+                цей день був наповнений щирими емоціями та затишною атмосферою.
+              </p>
+            </div>
+          </div>
+          <div class="atantion_img atantion_img_two">
+            <img src="assets/images/attention-2.webp" alt="" />
+          </div>
+          <div class="atantion_text_wrap _text_wrap_two">
+            <p class="_info__text first__letter">
+              Любі гості, якщо у вас заплановане привітання, пісня чи танець,
+              будь ласка, повідомте про це ведучого заздалегідь, щоб зробити
+              святкову програму ще більш гармонійною.
+            </p>
+          </div>
+        </section>
+
+        <section class="section__form" id="rsvp" data-heart="section3">
+          <header class="form__header header_section">
+            <p>Видання № 1</p>
+            <p>Неділя 11.04.2027 Року</p>
+          </header>
+          <div class="form_wrap">
+            <h2 class="form__title title_style">Анкета</h2>
+            <div class="form_text_wrap">
+              <p>Будь ласка, підтвердіть свою присутність до 1.09.2025 року.</p>
+            </div>
+            <form id="contactForm" class="form" novalidate>
+              <div class="form_data" data-type="text">
+                <label for="guest-name" class="input__title"
+                  >Прізвище та імʼя</label
+                >
+                <input
+                  type="text"
+                  id="guest-name"
+                  name="name"
+                  required
+                  class="input_name"
+                  placeholder="Тарас Шевченко"
+                  autocomplete="name"
+                />
+                <span class="error_message" data-error="name" hidden
+                  >Поле не повинно бути пустим</span
+                >
+              </div>
+
+              <fieldset class="form_data input_radio__wrap">
+                <legend class="input__title input_question">
+                  Чи зможете ви бути присутнім?
+                </legend>
+                <div class="radio_one">
+                  <input
+                    type="radio"
+                    class="input__radio"
+                    id="attendance-yes"
+                    name="attendance"
+                    value="yes"
+                  />
+                  <label for="attendance-yes" class="radio__title"
+                    >Так, зможу</label
+                  >
+                </div>
+                <div class="radio_one">
+                  <input
+                    type="radio"
+                    class="input__radio"
+                    id="attendance-later"
+                    name="attendance"
+                    value="later"
+                  />
+                  <label for="attendance-later" class="radio__title"
+                    >Повідомлю пізніше</label
+                  >
+                </div>
+                <div class="radio_tree">
+                  <input
+                    type="radio"
+                    class="input__radio"
+                    id="attendance-no"
+                    name="attendance"
+                    value="no"
+                  />
+                  <label for="attendance-no" class="radio__title"
+                    >Не зможу прийти</label
+                  >
+                </div>
+                <span class="error_message" data-error="attendance" hidden
+                  >Виберіть один з варіантів</span
+                >
+              </fieldset>
+
+              <div class="form_data" data-type="text">
+                <label for="guest-comment" class="input__title">Коментар</label>
+                <input
+                  type="text"
+                  id="guest-comment"
+                  name="comment"
+                  class="input_name"
+                  placeholder="Чекаю з нетерпінням"
+                />
+              </div>
+              <div class="form__btn__wrap btn__wrap">
+                <button type="submit" class="btn__style">Відправити</button>
+              </div>
+              <p class="form-note">
+                Демоверсія зберігає відповідь лише у цьому браузері.
+              </p>
+            </form>
+          </div>
+        </section>
+      </div>
+
+      <section class="last__section">
+        <div class="section_last_fixed">
+          <header class="last__header header_section">
+            <p>Видання № 1</p>
+            <p>Неділя 11.04.2027 Року</p>
+          </header>
+          <div class="last__bg">
+            <img src="assets/images/last.webp" alt="" />
+          </div>
+          <p class="last_text bg_text">
+            З нетерпінням чекаємо на Вас у цей важливий день!
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <dialog class="response-dialog" id="response-dialog">
+      <button
+        class="dialog-close"
+        type="button"
+        aria-label="Закрити"
+        data-close-dialog
+      >
+        ×
+      </button>
+      <p class="dialog-kicker">Готово!</p>
+      <h2>Вашу відповідь отримано.</h2>
+      <p>
+        Щоб не забути про подію, додайте нагадування у свій календар.
+      </p>
+      <button class="calendar-button" type="button" id="download-calendar">
+        Додати у календар
+      </button>
+    </dialog>
+  </body>
+</html>
