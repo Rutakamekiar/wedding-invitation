@@ -2,6 +2,10 @@
 
 A static, newspaper-style wedding invitation prepared for GitHub Pages.
 
+The page opens with an animated envelope. Clicking the wax seal opens the
+invitation, unlocks scrolling, and starts the background music. Personalized
+guest links also display the decoded guest name on the envelope.
+
 ## Run locally
 
 Because the site is completely static, any local HTTP server works:

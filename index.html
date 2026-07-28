@@ -28,7 +28,42 @@
     <script src="script.js" defer></script>
   </head>
 
-  <body>
+  <body class="envelope-locked">
+    <section
+      class="envelope-gate"
+      id="envelope-gate"
+      aria-labelledby="envelope-title"
+      aria-describedby="envelope-instruction"
+      role="dialog"
+      aria-modal="true"
+    >
+      <div class="envelope-box">
+        <div class="envelope-flap envelope-flap--top">
+          <img src="assets/images/envelope/top.svg" alt="" />
+          <h2 class="envelope-title" id="envelope-title">
+            Запрошення на весілля
+          </h2>
+        </div>
+        <div class="envelope-flap envelope-flap--bottom">
+          <img src="assets/images/envelope/bottom.svg" alt="" />
+          <p class="envelope-recipient" id="envelope-recipient">
+            Андрій та Анна
+          </p>
+        </div>
+        <button
+          class="envelope-seal"
+          id="envelope-seal"
+          type="button"
+          aria-label="Відкрити запрошення"
+        >
+          <img src="assets/images/envelope/seal.webp" alt="" />
+        </button>
+        <p class="envelope-instruction" id="envelope-instruction">
+          Натисніть на печатку
+        </p>
+      </div>
+    </section>
+
     <main class="wrapper">
       <div class="language-badge" aria-label="Мова сторінки">UA</div>
 

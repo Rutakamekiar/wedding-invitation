@@ -50,7 +50,55 @@ function applyGuestName() {
   document.getElementById("guest-greeting").textContent =
     `Дорогі ${guestName}`;
   document.getElementById("guest-name").value = guestName;
+  document.getElementById("envelope-recipient").textContent = guestName;
   document.title = `${guestName} — весільне запрошення`;
+}
+
+function setupEnvelope() {
+  const gate = document.getElementById("envelope-gate");
+  const seal = document.getElementById("envelope-seal");
+  const invitation = document.querySelector("main");
+  const music = document.getElementById("background-music");
+  const musicButton = document.getElementById("mute-button");
+  const playIcon = document.getElementById("sound-on");
+  const pauseIcon = document.getElementById("sound-off");
+  const reducedMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)",
+  ).matches;
+  let opening = false;
+
+  invitation.inert = true;
+  window.scrollTo(0, 0);
+
+  seal.addEventListener("click", () => {
+    if (opening) return;
+    opening = true;
+    gate.classList.add("is-opening");
+    gate.setAttribute("aria-hidden", "true");
+
+    music.play().then(
+      () => {
+        musicButton.setAttribute("aria-pressed", "true");
+        musicButton.setAttribute("aria-label", "Вимкнути музику");
+        playIcon.hidden = true;
+        pauseIcon.hidden = false;
+      },
+      () => {
+        musicButton.setAttribute("aria-pressed", "false");
+      },
+    );
+
+    window.setTimeout(
+      () => {
+        gate.hidden = true;
+        document.body.classList.remove("envelope-locked");
+        invitation.inert = false;
+        invitation.focus({ preventScroll: true });
+        window.scrollTo(0, 0);
+      },
+      reducedMotion ? 30 : 1_250,
+    );
+  });
 }
 
 function pluralizeUkrainian(value, forms) {
@@ -589,6 +637,7 @@ window.createGuestLink = function createGuestLink(name) {
 
 document.addEventListener("DOMContentLoaded", () => {
   applyGuestName();
+  setupEnvelope();
   updateCountdown();
   window.setInterval(updateCountdown, 1_000);
   setupFixedSections();
