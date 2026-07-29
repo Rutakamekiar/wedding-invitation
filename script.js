@@ -962,7 +962,6 @@ function setupDesignPlayground() {
     { label: "Програма дня", selector: "#program", value: "#fffdf8" },
     { label: "Гра зі словами", selector: "#game", value: "#fffdf8" },
     { label: "Дрес-код", selector: "#dress-code", value: "#fffdf8" },
-    { label: "Деталі", selector: "#details", value: "#fffdf8" },
     {
       label: "Важлива інформація",
       selector: ".section__atantion",
@@ -992,9 +991,6 @@ function setupDesignPlayground() {
     { label: "Дрес-код — портрет", selector: "._drescode_info_img img" },
     { label: "Дрес-код — деталі", selector: ".item_col_img img" },
     { label: "Фото відліку", selector: ".countdown_bg img" },
-    { label: "Банер деталей", selector: ".organizator_img img" },
-    { label: "Фото організатора", selector: "._organizator_img img" },
-    { label: "Фото побажань", selector: "._wish_img img" },
     { label: "Банер «Гірко»", selector: ".atantion_img:not(.atantion_img_two) img" },
     { label: "Другий банер", selector: ".atantion_img_two img" },
     { label: "Фінальне фото", selector: ".last__bg img" },
