@@ -499,6 +499,23 @@ img {
   background: var(--paper);
 }
 
+.info_date_wrap ._date_wrap {
+  overflow: hidden;
+}
+
+.info_date_wrap ._date_img {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.info_date_wrap ._date_img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
 .venue-layout .__local_item_wrap {
   justify-content: flex-start;
 }
