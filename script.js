@@ -854,7 +854,7 @@ function setupDesignPlayground() {
     { label: "Золотий акцент", property: "--gold", value: "#b08a4a" },
     { label: "Темне золото", property: "--gold-deep", value: "#7a5a28" },
     { label: "Світле золото", property: "--gold-light", value: "#ead9b8" },
-    { label: "Конверт", property: "--envelope", value: "#b08a4a" },
+    { label: "Конверт", property: "--envelope", value: "#fdf2d4" },
   ];
 
   paletteOptions.forEach((option) => {
