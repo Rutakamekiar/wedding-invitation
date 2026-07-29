@@ -123,7 +123,7 @@
           <div class="info_date_wrap">
             <div class="_date_wrap">
               <div class="_date_img">
-                <img src="assets/images/date.webp" alt="" />
+                <img src="assets/images/date.webp" alt="" loading="lazy" />
               </div>
             </div>
             <div class="info_text_wrap">
@@ -172,7 +172,11 @@
               </div>
             </div>
             <div class="_local_img">
-              <img src="assets/images/location.webp" alt="Місце весілля" />
+              <img
+                src="assets/images/location.webp"
+                alt="Місце весілля"
+                loading="lazy"
+              />
             </div>
           </div>
         </section>
@@ -275,7 +279,11 @@
               >
                 <span></span><span></span>
               </button>
-              <img src="assets/images/couple.webp" alt="Владислав та Олена" />
+              <img
+                src="assets/images/couple.webp"
+                alt="Владислав та Олена"
+                loading="lazy"
+              />
             </div>
           </div>
           <div class="word-list" id="wordList"></div>
@@ -291,6 +299,7 @@
               <img
                 src="assets/images/dresscode/portrait.webp"
                 alt="Приклад образу"
+                loading="lazy"
               />
             </div>
             <div class="_drescode_info_wrap">
@@ -348,6 +357,7 @@
               <img
                 src="assets/images/dresscode/detail.webp"
                 alt="Деталь святкового образу"
+                loading="lazy"
               />
             </div>
           </div>
@@ -357,7 +367,11 @@
       <section class="section_countdown" aria-label="Відлік до весілля">
         <div class="section_countdown_fixed">
           <div class="countdown_bg">
-            <img src="assets/images/IMG_4128.webp" alt="" />
+            <img
+              src="assets/images/IMG_4128.webp"
+              alt=""
+              loading="lazy"
+            />
           </div>
           <div class="countdown_wrap">
             <h2 class="countdown__title">До весілля залишилось</h2>
@@ -390,7 +404,11 @@
             <p>Субота 05.09.2026 року</p>
           </header>
           <div class="atantion_img">
-            <img src="assets/images/attention-1.webp" alt="" />
+            <img
+              src="assets/images/attention-1.webp"
+              alt=""
+              loading="lazy"
+            />
           </div>
           <div class="atantion_main_wrap">
             <h2 class="atantion_title title_style">
@@ -405,7 +423,11 @@
             </div>
           </div>
           <div class="atantion_img atantion_img_two">
-            <img src="assets/images/attention-2.webp" alt="" />
+            <img
+              src="assets/images/attention-2.webp"
+              alt=""
+              loading="lazy"
+            />
           </div>
           <div class="atantion_text_wrap _text_wrap_two">
             <p class="_info__text first__letter">
@@ -431,7 +453,9 @@
           <div class="form_wrap">
             <h2 class="form__title title_style">Анкета</h2>
             <div class="form_text_wrap">
-              <p>Будь ласка, підтвердіть свою присутність.</p>
+              <p>
+                Будь ласка, підтвердіть присутність до 20 серпня 2026 року.
+              </p>
             </div>
             <form
               id="contactForm"
@@ -626,7 +650,7 @@
             <p>Субота 05.09.2026 року</p>
           </header>
           <div class="last__bg">
-            <img src="assets/images/last.webp" alt="" />
+            <img src="assets/images/last.webp" alt="" loading="lazy" />
           </div>
           <p class="last_text bg_text">
             З нетерпінням чекаємо на Вас у цей важливий день!
@@ -634,89 +658,6 @@
         </div>
       </section>
     </main>
-
-    <aside class="design-playground" aria-label="Тимчасовий редактор дизайну">
-      <button
-        class="design-playground__toggle"
-        id="design-playground-toggle"
-        type="button"
-        aria-expanded="false"
-        aria-controls="design-playground-panel"
-      >
-        <span aria-hidden="true">✦</span>
-        <span data-playground-toggle-label>Спробувати дизайн</span>
-      </button>
-
-      <section
-        class="design-playground__panel"
-        id="design-playground-panel"
-        aria-labelledby="design-playground-title"
-        hidden
-      >
-        <header class="design-playground__header">
-          <div>
-            <span class="design-playground__badge">Тимчасовий режим</span>
-            <h2 id="design-playground-title">Дизайн запрошення</h2>
-          </div>
-          <button
-            class="design-playground__close"
-            type="button"
-            aria-label="Закрити редактор"
-            data-design-close
-          >
-            ×
-          </button>
-        </header>
-
-        <p class="design-playground__intro">
-          Спробуйте інші кольори й фотографії. Зміни бачите лише ви — після
-          оновлення сторінки вони зникнуть.
-        </p>
-
-        <details class="design-playground__group" open>
-          <summary>Основні кольори</summary>
-          <div
-            class="design-playground__controls"
-            id="playground-palette-controls"
-          ></div>
-        </details>
-
-        <details class="design-playground__group">
-          <summary>Шрифти</summary>
-          <div
-            class="design-playground__font-controls"
-            id="playground-font-controls"
-          ></div>
-        </details>
-
-        <details class="design-playground__group">
-          <summary>Фони розділів</summary>
-          <div
-            class="design-playground__controls"
-            id="playground-section-controls"
-          ></div>
-        </details>
-
-        <details class="design-playground__group">
-          <summary>Фотографії</summary>
-          <div
-            class="design-playground__image-controls"
-            id="playground-image-controls"
-          ></div>
-        </details>
-
-        <footer class="design-playground__footer">
-          <p class="design-playground__status" aria-live="polite"></p>
-          <button
-            class="design-playground__reset"
-            id="design-playground-reset"
-            type="button"
-          >
-            Скинути всі зміни
-          </button>
-        </footer>
-      </section>
-    </aside>
 
     <dialog class="response-dialog" id="response-dialog">
       <button

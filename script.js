@@ -1107,7 +1107,6 @@ document.addEventListener("DOMContentLoaded", () => {
   setupWordSearch();
   setupDecorativeHearts();
   setupRsvpForm();
-  setupDesignPlayground();
   document
     .getElementById("download-calendar")
     .addEventListener("click", downloadCalendarEvent);
