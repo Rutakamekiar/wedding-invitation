@@ -1,58 +1,6 @@
 "use strict";
 
 const WEDDING_DATE = new Date("2026-09-05T14:00:00+03:00");
-const DEFAULT_GREETING = "Дорогі гості";
-
-function decodeBase64Url(value) {
-  const normalized = value.replace(/-/g, "+").replace(/_/g, "/");
-  const padded = normalized.padEnd(
-    normalized.length + ((4 - (normalized.length % 4)) % 4),
-    "=",
-  );
-  const bytes = Uint8Array.from(atob(padded), (character) =>
-    character.charCodeAt(0),
-  );
-  return new TextDecoder().decode(bytes);
-}
-
-function getGuestName() {
-  const params = new URLSearchParams(window.location.search);
-  const encodedGuest = params.get("guest") || params.get("g");
-  const readableGuest = params.get("name");
-
-  if (encodedGuest) {
-    try {
-      const decoded = decodeBase64Url(encodedGuest).trim();
-      if (!decoded) return "";
-
-      try {
-        const payload = JSON.parse(decoded);
-        if (typeof payload === "string") return payload.trim();
-        if (typeof payload.name === "string") return payload.name.trim();
-        if (Array.isArray(payload.names)) {
-          return payload.names.filter(Boolean).join(" та ").trim();
-        }
-      } catch {
-        return decoded;
-      }
-    } catch {
-      console.warn("Guest parameter could not be decoded.");
-    }
-  }
-
-  return readableGuest?.trim() || "";
-}
-
-function applyGuestName() {
-  const guestName = getGuestName();
-  if (!guestName) return;
-
-  document.getElementById("guest-greeting").textContent =
-    `Дорогі ${guestName}`;
-  document.getElementById("guest-name").value = guestName;
-  document.getElementById("envelope-recipient").textContent = guestName;
-  document.title = `${guestName} — весільне запрошення`;
-}
 
 function setupEnvelope() {
   const gate = document.getElementById("envelope-gate");
@@ -666,14 +614,9 @@ function setupRsvpForm() {
   const attendanceError = form.querySelector('[data-error="attendance"]');
   const submitError = form.querySelector('[data-error="submit"]');
   const submitButton = form.querySelector('button[type="submit"]');
-  const guestTokenInput = document.getElementById("rsvp-guest-token");
   const submittedAtInput = document.getElementById("rsvp-submitted-at");
   const submitButtonLabel = submitButton.textContent.trim();
-  const params = new URLSearchParams(window.location.search);
   let isSubmitting = false;
-
-  guestTokenInput.value =
-    params.get("guest") || params.get("g") || params.get("name") || "";
 
   form.addEventListener("submit", async (event) => {
     event.preventDefault();
@@ -1139,25 +1082,7 @@ function downloadCalendarEvent() {
   URL.revokeObjectURL(link.href);
 }
 
-window.createGuestLink = function createGuestLink(name) {
-  const bytes = new TextEncoder().encode(name);
-  let binary = "";
-  bytes.forEach((byte) => {
-    binary += String.fromCharCode(byte);
-  });
-  const encoded = btoa(binary)
-    .replace(/\+/g, "-")
-    .replace(/\//g, "_")
-    .replace(/=+$/, "");
-  const url = new URL(window.location.href);
-  url.search = "";
-  url.hash = "";
-  url.searchParams.set("guest", encoded);
-  return url.toString();
-};
-
 document.addEventListener("DOMContentLoaded", () => {
-  applyGuestName();
   setupEnvelope();
   updateCountdown();
   window.setInterval(updateCountdown, 1_000);
