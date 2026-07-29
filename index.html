@@ -489,18 +489,6 @@
                     >Так, зможу</label
                   >
                 </div>
-                <div class="radio_one">
-                  <input
-                    type="radio"
-                    class="input__radio"
-                    id="attendance-later"
-                    name="attendance"
-                    value="Повідомлю пізніше"
-                  />
-                  <label for="attendance-later" class="radio__title"
-                    >Повідомлю пізніше</label
-                  >
-                </div>
                 <div class="radio_tree">
                   <input
                     type="radio"
@@ -516,6 +504,82 @@
                 <span class="error_message" data-error="attendance" hidden
                   >Виберіть один з варіантів</span
                 >
+              </fieldset>
+
+              <fieldset
+                class="form_data preference-fieldset"
+                id="alcohol-preferences"
+              >
+                <legend class="input__title input_question">
+                  Які алкогольні напої ви обираєте?
+                </legend>
+                <p class="input__hint">Можна вибрати декілька варіантів</p>
+                <div class="preference-grid">
+                  <label class="preference-option">
+                    <input
+                      type="checkbox"
+                      class="input__checkbox"
+                      name="alcoholPreferences"
+                      value="Віскі"
+                    />
+                    <span>Віскі</span>
+                  </label>
+                  <label class="preference-option">
+                    <input
+                      type="checkbox"
+                      class="input__checkbox"
+                      name="alcoholPreferences"
+                      value="Ром"
+                    />
+                    <span>Ром</span>
+                  </label>
+                  <label class="preference-option">
+                    <input
+                      type="checkbox"
+                      class="input__checkbox"
+                      name="alcoholPreferences"
+                      value="Вино"
+                    />
+                    <span>Вино</span>
+                  </label>
+                  <label class="preference-option">
+                    <input
+                      type="checkbox"
+                      class="input__checkbox"
+                      name="alcoholPreferences"
+                      value="Джин"
+                    />
+                    <span>Джин</span>
+                  </label>
+                  <label class="preference-option">
+                    <input
+                      type="checkbox"
+                      class="input__checkbox"
+                      name="alcoholPreferences"
+                      value="Горілка"
+                    />
+                    <span>Горілка</span>
+                  </label>
+                  <label class="preference-option">
+                    <input
+                      type="checkbox"
+                      class="input__checkbox"
+                      name="alcoholPreferences"
+                      value="Шампанське"
+                    />
+                    <span>Шампанське</span>
+                  </label>
+                  <label class="preference-option preference-option--none">
+                    <input
+                      type="checkbox"
+                      class="input__checkbox"
+                      name="alcoholPreferences"
+                      value="Без алкоголю"
+                      data-alcohol-none
+                    />
+                    <span>Без алкоголю</span>
+                  </label>
+                </div>
               </fieldset>
 
               <div class="form_data" data-type="text">

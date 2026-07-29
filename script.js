@@ -615,8 +615,24 @@ function setupRsvpForm() {
   const submitError = form.querySelector('[data-error="submit"]');
   const submitButton = form.querySelector('button[type="submit"]');
   const submittedAtInput = document.getElementById("rsvp-submitted-at");
+  const alcoholInputs = form.querySelectorAll(
+    'input[name="alcoholPreferences"]',
+  );
+  const noAlcoholInput = form.querySelector("[data-alcohol-none]");
   const submitButtonLabel = submitButton.textContent.trim();
   let isSubmitting = false;
+
+  alcoholInputs.forEach((input) => {
+    input.addEventListener("change", () => {
+      if (input === noAlcoholInput && input.checked) {
+        alcoholInputs.forEach((option) => {
+          if (option !== noAlcoholInput) option.checked = false;
+        });
+      } else if (input.checked) {
+        noAlcoholInput.checked = false;
+      }
+    });
+  });
 
   form.addEventListener("submit", async (event) => {
     event.preventDefault();

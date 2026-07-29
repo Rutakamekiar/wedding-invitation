@@ -371,6 +371,93 @@ img {
   font-size: 22px;
 }
 
+.preference-fieldset {
+  min-width: 0;
+  border: 0;
+  padding: 0;
+}
+
+.input__hint {
+  margin: -12px 0 16px;
+  color: #8b7a60;
+  font-size: 15px;
+  text-align: left;
+}
+
+.preference-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.preference-option {
+  display: flex;
+  min-height: 48px;
+  align-items: center;
+  gap: 12px;
+  border: 1px solid var(--gold-light);
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.55);
+  padding: 10px 14px;
+  color: var(--ink);
+  cursor: pointer;
+  font-size: 20px;
+  transition:
+    border-color 180ms ease,
+    background-color 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.preference-option:hover {
+  border-color: var(--gold);
+  background: var(--gold-faint);
+}
+
+.preference-option:has(.input__checkbox:checked) {
+  border-color: var(--gold);
+  background: var(--gold-faint);
+  box-shadow: inset 0 0 0 1px rgba(176, 138, 74, 0.16);
+}
+
+.preference-option--none {
+  grid-column: 1 / -1;
+}
+
+.input__checkbox {
+  appearance: none;
+  position: relative;
+  width: 20px;
+  height: 20px;
+  flex: 0 0 20px;
+  margin: 0;
+  border: 1px solid var(--gold-deep);
+  border-radius: 2px;
+  background: var(--paper-pure);
+  cursor: pointer;
+}
+
+.input__checkbox:checked {
+  border-color: var(--gold);
+  background: var(--gold);
+}
+
+.input__checkbox:checked::after {
+  content: "";
+  position: absolute;
+  top: 3px;
+  left: 6px;
+  width: 5px;
+  height: 9px;
+  border: solid #fff;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.input__checkbox:focus-visible {
+  outline: 2px solid var(--gold-deep);
+  outline-offset: 3px;
+}
+
 .error_message {
   display: block;
   margin-top: 8px;
@@ -746,6 +833,19 @@ img {
 
   .radio__title {
     font-size: 20px;
+  }
+
+  .preference-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .preference-option--none {
+    grid-column: auto;
+  }
+
+  .preference-option {
+    min-height: 44px;
+    font-size: 18px;
   }
 
   .btn__style {
