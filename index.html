@@ -288,10 +288,6 @@
             </div>
           </div>
           <div class="word-list" id="wordList"></div>
-          <p class="game-secret-result" id="game-secret-result" role="status" hidden>
-            Матч розпочато! Захищайте Ancient, тобто молодят, і не фідіть
-            шампанським.
-          </p>
         </section>
 
         <section class="section_drescode" id="dress-code">
@@ -663,6 +659,26 @@
         </div>
       </section>
     </main>
+
+    <dialog
+      class="response-dialog game-secret-dialog"
+      id="game-secret-dialog"
+      aria-labelledby="game-secret-title"
+    >
+      <p class="dialog-kicker">Секретний раунд!</p>
+      <h2 id="game-secret-title">Доту знайдено</h2>
+      <p>
+        Матч розпочато! Захищайте Ancient, тобто молодят, і не фідіть
+        шампанським.
+      </p>
+      <button
+        class="calendar-button game-continue-button"
+        type="button"
+        data-continue-game
+      >
+        Продовжити гру
+      </button>
+    </dialog>
 
     <dialog class="response-dialog" id="response-dialog">
       <button

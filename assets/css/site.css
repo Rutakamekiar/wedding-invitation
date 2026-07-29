@@ -1130,16 +1130,10 @@ body {
   color: var(--gold-deep);
 }
 
-.game-secret-result {
-  max-width: 664px;
-  margin-top: 18px;
-  padding-top: 14px;
-  border-top: 1px solid rgba(176, 138, 74, 0.45);
-  color: var(--gold-deep);
-  font-family: "Cormorant Infant", serif;
-  font-size: 22px;
-  font-weight: 600;
-  text-align: center;
+.game-secret-dialog .game-continue-button {
+  width: min(100%, 260px);
+  min-height: 48px;
+  font-size: 16px;
 }
 
 .drescode_item ._color_item {

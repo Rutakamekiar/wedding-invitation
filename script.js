@@ -440,7 +440,7 @@ function setupWordSearch() {
   const grid = document.getElementById("grid");
   const wordList = document.getElementById("wordList");
   const wordsData = document.getElementById("words-data");
-  const secretResult = document.getElementById("game-secret-result");
+  const secretDialog = document.getElementById("game-secret-dialog");
   const canvas = document.getElementById("lineCanvas");
   const context = canvas.getContext("2d");
   const words = wordsData.dataset.words
@@ -540,7 +540,13 @@ function setupWordSearch() {
       });
       foundSecretWords.add(selectedWord);
       selectedCells = [];
-      secretResult.hidden = false;
+      if (typeof secretDialog.showModal === "function") {
+        secretDialog.showModal();
+      } else {
+        window.alert(
+          secretDialog.querySelector("p:not(.dialog-kicker)").textContent,
+        );
+      }
     } else {
       window.setTimeout(clearTemporarySelection, 350);
     }
@@ -558,6 +564,16 @@ function setupWordSearch() {
   });
   grid.addEventListener("pointerup", finishSelection);
   grid.addEventListener("pointercancel", finishSelection);
+
+  secretDialog
+    .querySelector("[data-continue-game]")
+    .addEventListener("click", () => {
+      secretDialog.close();
+    });
+
+  secretDialog.addEventListener("click", (event) => {
+    if (event.target === secretDialog) secretDialog.close();
+  });
 
   function showGameSurprise() {
     document.querySelector(".grid-wrapper").classList.add("active");
