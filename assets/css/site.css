@@ -768,6 +768,15 @@ img {
     width: 64px;
     height: 56px;
   }
+
+  .item_col_wrap[data-heart="section2"] {
+    padding-bottom: 54px;
+  }
+
+  .item_col_wrap[data-heart="section2"] > .heart {
+    top: auto !important;
+    bottom: 8px;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
