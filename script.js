@@ -582,7 +582,6 @@ function setupDecorativeHearts() {
     ],
     section4: [
       ["62%", "9%"],
-      ["73%", "44%"],
       ["85%", "88%"],
     ],
   };

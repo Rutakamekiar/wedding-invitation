@@ -586,6 +586,24 @@ img {
   background: var(--paper);
 }
 
+.attention-cat {
+  width: min(32vw, 240px);
+  aspect-ratio: 4 / 5;
+  margin: 42px auto 0;
+  border: 1px solid var(--gold);
+  background: var(--paper-pure);
+  padding: 7px;
+  box-shadow: 0 14px 35px rgba(76, 58, 32, 0.14);
+  transform: rotate(2deg);
+}
+
+.attention-cat img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 38%;
+}
+
 .info_date_wrap ._date_wrap {
   overflow: hidden;
 }
@@ -861,6 +879,16 @@ img {
   .info_date_wrap ._date_img img {
     object-fit: contain;
     object-position: center;
+  }
+
+  .section__atantion {
+    padding-bottom: 52px;
+  }
+
+  .attention-cat {
+    width: min(58vw, 220px);
+    margin-top: 34px;
+    padding: 5px;
   }
 
   .venue-item strong {
