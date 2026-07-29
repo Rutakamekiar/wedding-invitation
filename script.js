@@ -664,9 +664,22 @@ function setupRsvpForm() {
   const dialog = document.getElementById("response-dialog");
   const nameError = form.querySelector('[data-error="name"]');
   const attendanceError = form.querySelector('[data-error="attendance"]');
+  const submitError = form.querySelector('[data-error="submit"]');
+  const submitButton = form.querySelector('button[type="submit"]');
+  const guestTokenInput = document.getElementById("rsvp-guest-token");
+  const submittedAtInput = document.getElementById("rsvp-submitted-at");
+  const submitButtonLabel = submitButton.textContent.trim();
+  const params = new URLSearchParams(window.location.search);
+  let isSubmitting = false;
 
-  form.addEventListener("submit", (event) => {
+  guestTokenInput.value =
+    params.get("guest") || params.get("g") || params.get("name") || "";
+
+  form.addEventListener("submit", async (event) => {
     event.preventDefault();
+    if (isSubmitting) return;
+
+    submitError.hidden = true;
     const data = new FormData(form);
     const nameIsValid = Boolean(data.get("name")?.trim());
     const attendanceIsValid = Boolean(data.get("attendance"));
@@ -676,18 +689,39 @@ function setupRsvpForm() {
     if (!nameIsValid) nameInput.focus();
     if (!nameIsValid || !attendanceIsValid) return;
 
-    const response = {
-      name: data.get("name"),
-      attendance: data.get("attendance"),
-      comment: data.get("comment"),
-      submittedAt: new Date().toISOString(),
-    };
-    window.localStorage.setItem("wedding-rsvp-preview", JSON.stringify(response));
+    submittedAtInput.value = new Date().toISOString();
+    isSubmitting = true;
+    form.setAttribute("aria-busy", "true");
+    submitButton.disabled = true;
+    submitButton.textContent = "Надсилаємо…";
 
-    if (typeof dialog.showModal === "function") {
-      dialog.showModal();
-    } else {
-      window.alert("Готово! Вашу відповідь збережено.");
+    try {
+      const response = await fetch(form.action, {
+        method: "POST",
+        body: new FormData(form),
+        headers: {
+          Accept: "application/json",
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error(`Formspree returned ${response.status}`);
+      }
+
+      if (typeof dialog.showModal === "function") {
+        dialog.showModal();
+      } else {
+        window.alert("Готово! Вашу відповідь надіслано.");
+      }
+    } catch (error) {
+      console.error("RSVP submission failed.", error);
+      submitError.hidden = false;
+      submitError.focus?.();
+    } finally {
+      isSubmitting = false;
+      form.removeAttribute("aria-busy");
+      submitButton.disabled = false;
+      submitButton.textContent = submitButtonLabel;
     }
   });
 

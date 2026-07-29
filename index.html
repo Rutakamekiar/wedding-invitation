@@ -430,7 +430,40 @@
             <div class="form_text_wrap">
               <p>Будь ласка, підтвердіть свою присутність.</p>
             </div>
-            <form id="contactForm" class="form" novalidate>
+            <form
+              id="contactForm"
+              class="form"
+              action="https://formspree.io/f/mnjerbew"
+              method="POST"
+              novalidate
+            >
+              <input
+                type="hidden"
+                id="rsvp-guest-token"
+                name="guestToken"
+                value=""
+              />
+              <input
+                type="hidden"
+                name="source"
+                value="Wedding invitation website"
+              />
+              <input
+                type="hidden"
+                id="rsvp-submitted-at"
+                name="submittedAt"
+                value=""
+              />
+              <div class="form-honeypot" aria-hidden="true">
+                <label for="rsvp-company">Не заповнюйте це поле</label>
+                <input
+                  type="text"
+                  id="rsvp-company"
+                  name="_gotcha"
+                  tabindex="-1"
+                  autocomplete="off"
+                />
+              </div>
               <div class="form_data" data-type="text">
                 <label for="guest-name" class="input__title"
                   >Прізвище та імʼя</label
@@ -459,7 +492,7 @@
                     class="input__radio"
                     id="attendance-yes"
                     name="attendance"
-                    value="yes"
+                    value="Так, зможу"
                   />
                   <label for="attendance-yes" class="radio__title"
                     >Так, зможу</label
@@ -471,7 +504,7 @@
                     class="input__radio"
                     id="attendance-later"
                     name="attendance"
-                    value="later"
+                    value="Повідомлю пізніше"
                   />
                   <label for="attendance-later" class="radio__title"
                     >Повідомлю пізніше</label
@@ -483,7 +516,7 @@
                     class="input__radio"
                     id="attendance-no"
                     name="attendance"
-                    value="no"
+                    value="Не зможу прийти"
                   />
                   <label for="attendance-no" class="radio__title"
                     >Не зможу прийти</label
@@ -507,8 +540,18 @@
               <div class="form__btn__wrap btn__wrap">
                 <button type="submit" class="btn__style">Відправити</button>
               </div>
+              <p
+                class="form-submit-error"
+                data-error="submit"
+                role="alert"
+                tabindex="-1"
+                hidden
+              >
+                Не вдалося надіслати відповідь. Перевірте інтернет-зʼєднання та
+                спробуйте ще раз.
+              </p>
               <p class="form-note">
-                Демоверсія зберігає відповідь лише у цьому браузері.
+                Ваша відповідь буде надіслана організаторам весілля.
               </p>
             </form>
           </div>

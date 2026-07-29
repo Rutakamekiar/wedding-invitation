@@ -342,6 +342,7 @@ img {
 
 .input__radio {
   appearance: none;
+  position: relative;
   display: inline-block;
   width: 16px;
   height: 16px;
@@ -378,6 +379,14 @@ img {
   text-align: left;
 }
 
+.form-honeypot {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
 .btn__style {
   display: flex;
   align-items: center;
@@ -400,6 +409,22 @@ img {
 .btn__style:hover {
   transform: translateY(-1px);
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
+}
+
+.btn__style:disabled {
+  opacity: 0.68;
+  cursor: wait;
+  transform: none;
+  box-shadow: none;
+}
+
+.form-submit-error {
+  max-width: 420px;
+  margin: 14px auto 0;
+  color: #b00020;
+  font-size: 15px;
+  line-height: 1.35;
+  text-align: center;
 }
 
 .form-note {
