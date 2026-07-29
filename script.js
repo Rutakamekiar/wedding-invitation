@@ -359,10 +359,10 @@ const GRID_DATA = [
   "І",
   "І",
   "И",
-  "Е",
-  "Е",
-  "Ь",
-  "Ц",
+  "Д",
+  "О",
+  "Т",
+  "А",
   "Ь",
   "А",
   "Л",
@@ -439,13 +439,18 @@ const GRID_DATA = [
 function setupWordSearch() {
   const grid = document.getElementById("grid");
   const wordList = document.getElementById("wordList");
+  const wordsData = document.getElementById("words-data");
+  const secretResult = document.getElementById("game-secret-result");
   const canvas = document.getElementById("lineCanvas");
   const context = canvas.getContext("2d");
-  const words = document
-    .getElementById("words-data")
-    .dataset.words.split(",")
+  const words = wordsData.dataset.words
+    .split(",")
+    .map((word) => word.trim().toUpperCase());
+  const secretWords = wordsData.dataset.secretWords
+    .split(",")
     .map((word) => word.trim().toUpperCase());
   const foundWords = new Set();
+  const foundSecretWords = new Set();
   let selectedCells = [];
   let selecting = false;
 
@@ -517,6 +522,7 @@ function setupWordSearch() {
     const matchingWord = wordList.querySelector(
       `[data-word="${CSS.escape(selectedWord)}"]`,
     );
+    const isSecretWord = secretWords.includes(selectedWord);
 
     if (matchingWord && !foundWords.has(selectedWord)) {
       selectedCells.forEach((cell) => {
@@ -527,6 +533,14 @@ function setupWordSearch() {
       foundWords.add(selectedWord);
       selectedCells = [];
       if (foundWords.size === words.length) showGameSurprise();
+    } else if (isSecretWord && !foundSecretWords.has(selectedWord)) {
+      selectedCells.forEach((cell) => {
+        cell.classList.remove("selected");
+        cell.classList.add("correct");
+      });
+      foundSecretWords.add(selectedWord);
+      selectedCells = [];
+      secretResult.hidden = false;
     } else {
       window.setTimeout(clearTemporarySelection, 350);
     }
